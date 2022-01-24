@@ -15,7 +15,7 @@ session = ssh_connection.invoke_shell()
 session.send("\n")
 session.recv(BUF_SIZE)
 session.send("terminal length 0\n")
-time.sleep(TIMEOUT)
+time.sleep(TIMEOUT*1)
 
 
 session.send("\n")
