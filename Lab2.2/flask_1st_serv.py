@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 import glob
 import re
+import pprint
 
 hosts = {}
 
@@ -10,7 +11,12 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-    s = 'Welcome in my world'
+    s = '''<p align="center"><b>Welcome in my world!</b></p>
+         <p>There is you have 3 type of this site:</p>
+         <p>1st of all http://127.0.0.1:5000/ or  http://127.0.0.1:5000/index </p>
+         <p>2nd  http://127.0.0.1:5000/configs </p>
+         <p>3rd  http://127.0.0.1:5000/config/&lt;hostname&gt; </p>
+        '''
     return s
 
 
@@ -46,6 +52,5 @@ if __name__ == '__main__':
                                    read_line)
                 if isMatch:
                     hosts[file_name]['addresses'].append({'ip': isMatch.group(1), 'mask': isMatch.group(2)})
-
 
 app.run(debug=True)
