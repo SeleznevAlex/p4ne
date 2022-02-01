@@ -8,7 +8,7 @@ TIMEOUT = 1
 ssh_connection = paramiko.SSHClient()
 ssh_connection.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
-host_url = 'http://10.31.70.209/'
+host_url = '10.31.70.209'
 ssh_connection.connect(host_url, username='restapi', password='j0sg1280-7@', look_for_keys=False, allow_agent=False)
 session = ssh_connection.invoke_shell()
 
