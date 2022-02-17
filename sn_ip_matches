@@ -1,0 +1,20 @@
+from openpyxl import load_workbook
+
+file_txt = r'ip.txt'
+file_excel = r'new_table.xlsx'
+
+wb = load_workbook(file_excel)
+sheet = wb['Equip']
+
+with open(file_txt) as f:
+    all_lines = f.readlines()
+    for line in all_lines:
+        data_txt = line.strip().split()
+        sn_txt = data_txt[0]
+        ip_txt = data_txt[2]
+        for i in range(sheet.max_row):
+            sn_xcl = sheet.cell(row=(i + 1), column=5).value.strip()
+            if sn_xcl == sn_txt:
+                cell = sheet.cell(row=(i + 1), column=6)
+                cell.value = ip_txt
+wb.save(file_excel)
